@@ -1,0 +1,21 @@
+Question & Answers Document:
+
+{
+    'product_id(Number)': {
+        'id': Number,
+        'body': String,
+        'date': Date,
+        'name': String,
+        'helpfulness': Number,
+        'reported': Number,
+        'answers': {
+            'answer_id(Number)': {
+                'body': String,
+                'name': String,
+                'helpfulness': String,
+                'photos': []
+            }
+        }
+
+    } 
+}
