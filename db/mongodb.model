@@ -6,16 +6,19 @@ Question & Answers Document:
         'body': String,
         'date': Date,
         'name': String,
+        'email': String,
         'helpfulness': Number,
-        'reported': Number,
+        'reported': Boolean,
         'answers': {
             'answer_id(Number)': {
                 'body': String,
+                'date': Date,
                 'name': String,
+                'email': String,
                 'helpfulness': String,
-                'photos': []
+                'reported': Boolean,
+                'photos': Array
             }
         }
-
     } 
 }
