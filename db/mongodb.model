@@ -1,3 +1,5 @@
+Initial Schema
+
 Question & Answers Document:
 
 {
@@ -21,4 +23,35 @@ Question & Answers Document:
             }
         }
     } 
+}
+
+
+Alternative Schema
+
+Questions Document
+
+{
+    'question_id': Number,
+    'product_id': Number,
+    'body': String,
+    'date': Date,
+    'name': String,
+    'email': String,
+    'helpfulness': Number,
+    'reported': Boolean,
+    'answers': [Reference Array]
+}
+
+Answers Document
+
+{
+    'answer_id': Number,
+    'question_id': Number,
+    'body': String,
+    'date': Date,
+    'name': String,
+    'email': String,
+    'helpfulness': String,
+    'reported': Boolean,
+    'photos': [Strings]
 }
