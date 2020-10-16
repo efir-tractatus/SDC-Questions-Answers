@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
+var PORT = 27017;
 
 mongoose
-  .connect('mongodb://localhost:27017/qa', { useNewUrlParser: true })
+  .connect(`mongodb://mongo_qa:${PORT}/qa`, { useNewUrlParser: true })
   .catch((error) => console.log(error));
 
 mongoose.set('useNewUrlParser', true);
@@ -17,28 +18,28 @@ mongoose.connection.on('open', () => {
 });
 
 let questionsSchema = mongoose.Schema({
-  question_id: Number,
+  id: Number,
   product_id: Number,
   body: String,
-  date: Date,
+  date: String,
   name: String,
   email: String,
-  helpfulness: Number,
   reported: Boolean,
+  helpful: Number,
   answers: [],
 });
 
 let answersSchema = mongoose.Schema({
-  answer_id: Number,
+  id: Number,
+  question_id: Number,
   body: String,
-  date: Date,
+  date: String,
   name: String,
   email: String,
-  helpfulness: String,
   reported: Boolean,
-  photos: [String],
+  helpful: Number,
+  photos: Array,
 });
-
 
 let Question = mongoose.model('Question', questionsSchema);
 let Answer = mongoose.model('Answer', answersSchema);
