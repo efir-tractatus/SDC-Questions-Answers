@@ -42,15 +42,3 @@ db.questions_raw.find().forEach(function (doc) {
     'answers': []
   });
 });
-
-// {
-// 	"_id" : ObjectId("5f874cf9c1820d4e5dcf3242"),
-// 	"id" : 3521633,
-// 	"product_id" : 1000011,
-// 	"body" : "Quia ut saepe vel iste nihil.",
-// 	"date_written" : "2018-11-12",
-// 	"asker_name" : "Declan77",
-// 	"asker_email" : "Frederique_Fay34@hotmail.com",
-// 	"reported" : 0,
-// 	"helpful" : 19
-// }
