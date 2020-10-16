@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  server:
+    build:
+      context: .
+      network: host
+      dockerfile: Dockerfile
+    container_name: router
+    links:
+      - mongodb_container
+    ports: 
+      - 8080:80
+
+  mongodb_container:
+    image: mongo:latest
+    container_name: mongo_qa
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: rootpassword
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb_data_container:/data/db
+
+volumes:
+  mongodb_data_container:
