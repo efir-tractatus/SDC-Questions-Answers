@@ -2,7 +2,7 @@ FROM node:14.13.0
 
 WORKDIR /src
 
-ENV PORT 80
+ENV PORT 3333
 
 COPY package.json /src/package.json
 
