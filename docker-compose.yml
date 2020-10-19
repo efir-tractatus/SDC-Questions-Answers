@@ -9,19 +9,17 @@ services:
     container_name: router
     links:
       - mongodb_container
-    ports: 
+    ports:
       - 8080:3333
 
   mongodb_container:
     image: mongo:latest
     container_name: mongo_qa
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: rootpassword
     ports:
-      - 27017:27017
+      - 27018:27017
     volumes:
       - mongodb_data_container:/data/db
+    command: mongod --auth
 
 volumes:
   mongodb_data_container:

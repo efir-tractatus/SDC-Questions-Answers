@@ -1,2 +1,3 @@
 rawdata/
 node_modules/
+*.pem
