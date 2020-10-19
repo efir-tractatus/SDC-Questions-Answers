@@ -2,10 +2,7 @@ version: '3.8'
 
 services:
   server:
-    build:
-      context: .
-      network: host
-      dockerfile: Dockerfile
+    image: efirtractatus/sdc-qa-service
     container_name: router
     links:
       - mongodb_container
@@ -21,7 +18,7 @@ services:
       - 27018:27017
     volumes:
       - mongodb_data_container:/data/db
-    # command: mongod --auth
+    command: mongod --auth
 
 volumes:
   mongodb_data_container:
