@@ -45,5 +45,3 @@ let Question = mongoose.model('Question', questionsSchema);
 let Answer = mongoose.model('Answer', answersSchema);
 
 module.exports.mongoose = mongoose;
-
-

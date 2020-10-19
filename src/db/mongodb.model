@@ -1,33 +1,3 @@
-Initial Schema
-
-Question & Answers Document:
-
-{
-    'product_id(Number)': {
-        'id': Number,
-        'body': String,
-        'date': Date,
-        'name': String,
-        'email': String,
-        'helpfulness': Number,
-        'reported': Boolean,
-        'answers': {
-            'answer_id(Number)': {
-                'body': String,
-                'date': Date,
-                'name': String,
-                'email': String,
-                'helpfulness': String,
-                'reported': Boolean,
-                'photos': Array
-            }
-        }
-    } 
-}
-
-
-Alternative Schema
-
 Questions Document
 
 {
