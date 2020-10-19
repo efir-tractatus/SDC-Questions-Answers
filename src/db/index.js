@@ -1,9 +1,19 @@
 const mongoose = require('mongoose');
 var PORT = 27017;
 
-mongoose
-  .connect(`mongodb://mongo_qa:${PORT}/qa`, { useNewUrlParser: true })
-  .catch((error) => console.log(error));
+var connectWithRetry = function () {
+  return mongoose
+    .connect(`mongodb://mongo_qa:${PORT}/qa`, {
+      useNewUrlParser: true,
+      server: { auto_reconnect: true },
+    })
+    .catch((error) => {
+      console.log(error);
+      setTimeout(connectWithRetry(), 5000);
+    });
+};
+
+connectWithRetry();
 
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
