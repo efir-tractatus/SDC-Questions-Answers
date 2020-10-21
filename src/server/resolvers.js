@@ -1,6 +1,6 @@
-import db from '../db/index.js';
+const db = require('../db/index.js');
 
-export const resolvers = {
+module.exports.resolvers = {
   Query: {
     getAllQuestions: () => db.Question.find(),
     getQuestions: (context, args) => db.Question.find(args),

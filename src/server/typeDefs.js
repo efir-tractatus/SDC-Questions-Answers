@@ -1,6 +1,6 @@
-import { gql } from 'apollo-server-express';
+const { gql } = require('apollo-server-express');
 
-export const typeDefs = gql`
+module.exports.typeDefs = gql`
   type Question {
     id: Float
     product_id: Float
