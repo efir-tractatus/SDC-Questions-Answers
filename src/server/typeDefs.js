@@ -2,21 +2,20 @@ const { gql } = require('apollo-server-express');
 
 module.exports.typeDefs = gql`
   type Question {
-    id: Float
-    product_id: Float
+    _id: ID!
+    product_id: Float!
     body: String
     date: String
     name: String
     email: String
     reported: Boolean
     helpful: Float
-    answers_ref: [String]
     answers: [Answer]
   }
 
   type Answer {
-    id: Float
-    question_id: Float
+    _id: ID!
+    question_id: ID!
     body: String
     date: String
     name: String
@@ -29,15 +28,14 @@ module.exports.typeDefs = gql`
   type Query {
     getAllQuestions: [Question]
     getQuestions(product_id: Float): [Question]
-    getQuestion(id: Float): [Question]
+    getQuestion(_id: Float): [Question]
     getAllAnswers: [Answer]
     getAnswers(question_id: Float): [Answer]
-    getAnswer(id: Float): [Answer]
+    getAnswer(_id: Float): [Answer]
   }
 
   type Mutation {
     createUpdateQuestion(
-      id: Float!
       product_id: Float!
       body: String
       date: String
@@ -48,8 +46,7 @@ module.exports.typeDefs = gql`
     ): Question
 
     createUpdateAnswer(
-      id: Float!
-      question_id: Float!
+      question_id: ID!
       body: String
       date: String
       name: String
@@ -59,7 +56,7 @@ module.exports.typeDefs = gql`
       photos: [String]
     ): Answer
 
-    deleteQuestion(id: Float!): Question
-    deleteAnswer(id: Float!): Answer
+    deleteQuestion(_id: ID!): Question
+    deleteAnswer(_id: ID!): Answer
   }
 `;

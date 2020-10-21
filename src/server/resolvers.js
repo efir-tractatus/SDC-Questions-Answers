@@ -11,7 +11,7 @@ module.exports.resolvers = {
   },
   Question: {
     answers: (root) => {
-      return db.Answer.find({ question_id: root.id });
+      return db.Answer.find({ question_id: root._id });
     },
   },
   // Mutation:{
