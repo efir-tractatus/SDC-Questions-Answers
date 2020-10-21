@@ -6,7 +6,7 @@ const ObjectId = mongoose.Schema.Types.ObjectId
 
 var connectWithRetry = function () {
   return mongoose
-    .connect(remoteURI, {
+    .connect(localURI, {
       useNewUrlParser: true,
     })
     .catch((error) => {
@@ -30,7 +30,6 @@ mongoose.connection.on('open', () => {
 });
 
 let questionsSchema = mongoose.Schema({
-  id: Number,
   product_id: Number,
   body: String,
   date: String,
@@ -38,11 +37,9 @@ let questionsSchema = mongoose.Schema({
   email: String,
   reported: Boolean,
   helpful: Number,
-  answer_ref: Array
 });
 
 let answersSchema = mongoose.Schema({
-  id: Number,
   question_id: Number,
   body: String,
   date: String,
