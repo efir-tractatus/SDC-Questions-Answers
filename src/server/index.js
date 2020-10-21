@@ -1,18 +1,22 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const path = require('path');
-const cors = require('cors');
-const mongoose = require('../db/index.js');
-const app = express();
-var PORT = 3333
+import { ApolloServer, gql } from 'apollo-server-express';
+import express from 'express';
+import cors from 'cors';
+import db from '../db/index.js';
+import { resolvers } from './resolvers.js';
+import { typeDefs } from './typeDefs.js';
 
-app.use(bodyParser.json());
+const app = express();
+
+const server = new ApolloServer({ typeDefs, resolvers });
+
+server.applyMiddleware({ app });
+
 app.use(cors());
 
 app.get('/', (req, res) => {
-    res.status(200).send('Hello World')
-})
-
-app.listen(PORT, () => {
-  console.log(`listening on port ${PORT}`);
+  res.status(200).send('Hello Universe');
 });
+
+app.listen({ port: 4000 }, () =>
+  console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`)
+);

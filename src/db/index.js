@@ -1,11 +1,13 @@
 const mongoose = require('mongoose');
 var PORT = 27017;
+var localURI = `mongodb://localhost:${PORT}/qa`;
+var remoteURI = `mongodb://mongo_qa:${PORT}/qa`;
+const ObjectId = mongoose.Schema.Types.ObjectId
 
 var connectWithRetry = function () {
   return mongoose
-    .connect(`mongodb://mongo_qa:${PORT}/qa`, {
+    .connect(localURI, {
       useNewUrlParser: true,
-      server: { auto_reconnect: true },
     })
     .catch((error) => {
       console.log(error);
@@ -36,7 +38,7 @@ let questionsSchema = mongoose.Schema({
   email: String,
   reported: Boolean,
   helpful: Number,
-  answers: [],
+  answer_ref: Array
 });
 
 let answersSchema = mongoose.Schema({
@@ -55,3 +57,5 @@ let Question = mongoose.model('Question', questionsSchema);
 let Answer = mongoose.model('Answer', answersSchema);
 
 module.exports.mongoose = mongoose;
+module.exports.Question = Question;
+module.exports.Answer = Answer;
