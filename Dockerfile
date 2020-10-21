@@ -10,4 +10,4 @@ RUN npm install
 
 COPY . /src
 
-CMD ["nodemon", "src/server/index.js"]
+CMD ["node", "src/server/index.js"]
