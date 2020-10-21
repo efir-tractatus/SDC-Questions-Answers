@@ -4,7 +4,7 @@ db = conn.getDB('qa');
 printjson(db.stats());
 
 db.questions.drop();
-db.createCollection('questions', {
+db.createCollection('questions_new', {
   validator: {
     $jsonSchema: {
       bsonType: 'object',
@@ -13,12 +13,11 @@ db.createCollection('questions', {
         id: { bsonType: 'int' },
         product_id: { bsonType: 'int' },
         body: { bsonType: 'string' },
-        date: { bsonType: 'string' },
+        date: { bsonType: 'Date' },
         name: { bsonType: 'string' },
         email: { bsonType: 'string' },
         reported: { bsonType: 'bool' },
         helpful: { bsonType: 'int' },
-        answers: {bsonType: 'array'}
       }
     }
   }
@@ -39,6 +38,5 @@ db.questions_raw.find().forEach(function (doc) {
     'email': doc.asker_email,
     'reported': bool,
     'helpful': NumberInt(doc.helpful),
-    'answers': []
   });
 });

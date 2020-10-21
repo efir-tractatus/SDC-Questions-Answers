@@ -10,10 +10,9 @@ db.createCollection('answers', {
       bsonType: 'object',
       required: ['id', 'question_id'],
       properties: {
-        id: { bsonType: 'int' },
-        question_id: { bsonType: 'int' },
+        question_id: { bsonType: 'objectId' },
         body: { bsonType: 'string' },
-        date: { bsonType: 'string' },
+        date: { bsonType: 'Date' },
         name: { bsonType: 'string' },
         email: { bsonType: 'string' },
         reported: { bsonType: 'bool' },
@@ -34,9 +33,15 @@ db.answers_raw.find().forEach(function (doc) {
   db.answers_photos_raw.find({ answer_id: doc.id }).forEach(function (photo) {
     photoArray.push(photo.url);
   });
+
+  var q_id = '';
+
+  db.questions.find({ id: doc.question_id }).forEach(function (question) {
+    q_id = question._id;
+  });
+
   db.answers.insertOne({
-    id: NumberInt(doc.id),
-    question_id: NumberInt(doc.question_id),
+    question_id: q_id,
     body: doc.body,
     date: doc.date_written,
     name: doc.answerer_name,
