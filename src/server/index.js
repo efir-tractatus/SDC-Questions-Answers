@@ -7,11 +7,19 @@ const { typeDefs } = require('./typeDefs.js');
 
 const app = express();
 
-const server = new ApolloServer({ typeDefs, resolvers });
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  // context: ({ req, res }) => ({ req, res }),
+});
 
 server.applyMiddleware({ app });
 
 app.use(cors());
+
+// app.use((req, res) => {
+
+// })
 
 app.get('/', (req, res) => {
   res.status(200).send('Hello Universe');
