@@ -30,6 +30,7 @@ mongoose.connection.on('open', () => {
 });
 
 let questionsSchema = mongoose.Schema({
+  _id: ObjectId,
   product_id: Number,
   body: String,
   date: String,
@@ -40,6 +41,7 @@ let questionsSchema = mongoose.Schema({
 });
 
 let answersSchema = mongoose.Schema({
+  _id: ObjectId,
   question_id: ObjectId,
   body: String,
   date: String,

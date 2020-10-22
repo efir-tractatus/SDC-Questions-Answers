@@ -35,7 +35,8 @@ module.exports.typeDefs = gql`
   }
 
   type Mutation {
-    createUpdateQuestion(
+    createQuestion(
+      _id: ID!
       product_id: Float!
       body: String
       date: String
@@ -45,7 +46,8 @@ module.exports.typeDefs = gql`
       helpful: Float
     ): Question
 
-    createUpdateAnswer(
+    createAnswer(
+      _id: ID!
       question_id: ID!
       body: String
       date: String
