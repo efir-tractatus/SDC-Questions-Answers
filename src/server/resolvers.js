@@ -33,8 +33,14 @@ module.exports.resolvers = {
       return db.Question.create(docObject)
         .then((result) => {
           console.log('Result', result);
+          return result
         })
-        .catch((error) => console.log('<-------------------Error---------------------->:', error));
+        .catch((error) =>
+          console.log(
+            '<-------------------Error---------------------->:',
+            error
+          )
+        );
     },
     createAnswer: (context, { question_id, body, date, name, email }) => {
       let _id = new ObjectId();
@@ -48,35 +54,117 @@ module.exports.resolvers = {
         email: email,
         reported: false,
         helpful: 0,
-        photos: []
+        photos: [],
       };
       return db.Answer.create(docObject)
         .then((result) => {
           console.log('Result', result);
+          return result
         })
-        .catch((error) => console.log('<-------------------Error---------------------->:', error));
-    }, 
-    deleteAnswer: (context, [..._id]) => {
+        .catch((error) =>
+          console.log(
+            '<-------------------Error---------------------->:',
+            error
+          )
+        );
+    },
+
+    updateQuestion: (
+      context,
+      { _id, body, name, email, date, helpful, reported }
+    ) => {
+      if (!_id) {
+        return console.log('Error: No ID');
+      }
+      let docObject = {
+        body: body,
+        date: date,
+        name: name,
+        email: email,
+        helpful: helpful,
+        reported: reported,
+      };
+      db.Question.findByIdAndUpdate(_id, docObject, { new: true })
+        .then((result) => {
+          console.log('Result', result);
+          return result;
+        })
+        .catch((error) =>
+          console.log(
+            '<-------------------Error---------------------->:',
+            error
+          )
+        );
+    },
+
+    updateAnswer: (
+      context,
+      { _id, body, name, email, date, helpful, reported, photos }
+    ) => {
+      if (!_id) {
+        return console.log('Error: No ID');
+      }
+      let docObject = {
+        body: body,
+        date: date,
+        name: name,
+        email: email,
+        helpful: helpful,
+        reported: reported,
+        photos: photos
+      };
+      db.Answer.findByIdAndUpdate(_id, docObject, { new: true })
+        .then((result) => {
+          console.log('Result', result);
+          return result;
+        })
+        .catch((error) =>
+          console.log(
+            '<-------------------Error---------------------->:',
+            error
+          )
+        );
+    },
+
+    deleteAnswer: (context, _id) => {
       console.log('Passing', _id);
       db.Answer.findByIdAndDelete(_id)
         .then((result) => {
           console.log('Returning', result);
+          return result
         })
-        .catch((error) => console.log('<-------------------Error---------------------->:', error));
+        .catch((error) =>
+          console.log(
+            '<-------------------Error---------------------->:',
+            error
+          )
+        );
     },
     deleteQuestion: (context, _id) => {
       console.log('Passing to Delete Question', _id);
       db.Question.findByIdAndDelete(_id)
         .then((result) => {
           console.log('Returning', result);
+          return result
         })
-        .catch((error) => console.log('<-------------------Error---------------------->:', error));
+        .catch((error) =>
+          console.log(
+            '<-------------------Error---------------------->:',
+            error
+          )
+        );
 
       db.Answer.deleteMany({ question_id: _id })
         .then((result) => {
           console.log('Returning', result);
+          return result
         })
-        .catch((error) => console.log('<-------------------Error---------------------->:', error));
+        .catch((error) =>
+          console.log(
+            '<-------------------Error---------------------->:',
+            error
+          )
+        );
     },
   },
 };

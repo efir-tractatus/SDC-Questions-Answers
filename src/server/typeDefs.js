@@ -36,7 +36,6 @@ module.exports.typeDefs = gql`
 
   type Mutation {
     createQuestion(
-      _id: ID!
       product_id: Float!
       body: String
       date: String
@@ -47,7 +46,6 @@ module.exports.typeDefs = gql`
     ): Question
 
     createAnswer(
-      _id: ID!
       question_id: ID!
       body: String
       date: String
@@ -55,6 +53,27 @@ module.exports.typeDefs = gql`
       email: String
       reported: Boolean
       helpful: Float
+      photos: [String]
+    ): Answer
+
+    updateQuestion(
+      _id: ID!
+      body: String
+      date: String
+      name: String
+      email: String
+      reported: Boolean
+      helpful: Float
+    ): Question
+
+    updateAnswer(
+      _id: ID!
+      body: String
+      date: String
+      name: String
+      email: String
+      reported: String
+      helpful: String
       photos: [String]
     ): Answer
 
