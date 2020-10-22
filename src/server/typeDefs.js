@@ -28,10 +28,10 @@ module.exports.typeDefs = gql`
   type Query {
     getAllQuestions: [Question]
     getQuestions(product_id: Float): [Question]
-    getQuestion(_id: Float): [Question]
+    getQuestion(_id: ID): [Question]
     getAllAnswers: [Answer]
-    getAnswers(question_id: Float): [Answer]
-    getAnswer(_id: Float): [Answer]
+    getAnswers(question_id: ID): [Answer]
+    getAnswer(_id: ID): [Answer]
   }
 
   type Mutation {

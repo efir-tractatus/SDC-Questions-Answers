@@ -40,7 +40,7 @@ let questionsSchema = mongoose.Schema({
 });
 
 let answersSchema = mongoose.Schema({
-  question_id: Number,
+  question_id: ObjectId,
   body: String,
   date: String,
   name: String,
