@@ -5,19 +5,23 @@ const ObjectId = mongoose.Types.ObjectId;
 module.exports.resolvers = {
   Query: {
     getAllQuestions: () => db.Question.find(),
-    getQuestions: (context, args) => db.Question.find(args),
-    getQuestion: (context, args) => db.Question.find(args),
+    getQuestions: (parent, args, context) => db.Question.find(args),
+    getQuestion: (parent, args, context) => db.Question.find(args),
     getAllAnswers: () => db.Answer.find(),
-    getAnswers: (context, args) => db.Answer.find(args),
-    getAnswer: (context, args) => db.Answer.find(args),
+    getAnswers: (parent, args, context) => db.Answer.find(args),
+    getAnswer: (parent, args, context) => db.Answer.find(args),
   },
   Question: {
-    answers: (context) => {
-      return db.Answer.find({ question_id: context._id });
+    answers: (root) => {
+      return db.Answer.find({ question_id: root._id });
     },
   },
   Mutation: {
-    createQuestion: (context, { product_id, body, date, name, email }) => {
+    createQuestion: (
+      parent,
+      { product_id, body, date, name, email },
+      context
+    ) => {
       let _id = new ObjectId();
       console.log('New ID', _id);
       let docObject = {
@@ -33,7 +37,7 @@ module.exports.resolvers = {
       return db.Question.create(docObject)
         .then((result) => {
           console.log('Result', result);
-          return result
+          return result;
         })
         .catch((error) =>
           console.log(
@@ -42,7 +46,11 @@ module.exports.resolvers = {
           )
         );
     },
-    createAnswer: (context, { question_id, body, date, name, email }) => {
+    createAnswer: (
+      parent,
+      { question_id, body, date, name, email },
+      context
+    ) => {
       let _id = new ObjectId();
       console.log('New ID', _id);
       let docObject = {
@@ -59,7 +67,7 @@ module.exports.resolvers = {
       return db.Answer.create(docObject)
         .then((result) => {
           console.log('Result', result);
-          return result
+          return result;
         })
         .catch((error) =>
           console.log(
@@ -70,8 +78,9 @@ module.exports.resolvers = {
     },
 
     updateQuestion: (
-      context,
-      { _id, body, name, email, date, helpful, reported }
+      _parent,
+      { _id, body, name, email, date, helpful, reported },
+      context
     ) => {
       if (!_id) {
         return console.log('Error: No ID');
@@ -98,8 +107,9 @@ module.exports.resolvers = {
     },
 
     updateAnswer: (
-      context,
-      { _id, body, name, email, date, helpful, reported, photos }
+      parent,
+      { _id, body, name, email, date, helpful, reported, photos },
+      context
     ) => {
       if (!_id) {
         return console.log('Error: No ID');
@@ -111,7 +121,7 @@ module.exports.resolvers = {
         email: email,
         helpful: helpful,
         reported: reported,
-        photos: photos
+        photos: photos,
       };
       db.Answer.findByIdAndUpdate(_id, docObject, { new: true })
         .then((result) => {
@@ -126,12 +136,12 @@ module.exports.resolvers = {
         );
     },
 
-    deleteAnswer: (context, _id) => {
+    deleteAnswer: (parent, _id, context) => {
       console.log('Passing', _id);
       db.Answer.findByIdAndDelete(_id)
         .then((result) => {
           console.log('Returning', result);
-          return result
+          return result;
         })
         .catch((error) =>
           console.log(
@@ -140,12 +150,12 @@ module.exports.resolvers = {
           )
         );
     },
-    deleteQuestion: (context, _id) => {
+    deleteQuestion: (parent, _id, context) => {
       console.log('Passing to Delete Question', _id);
       db.Question.findByIdAndDelete(_id)
         .then((result) => {
           console.log('Returning', result);
-          return result
+          return result;
         })
         .catch((error) =>
           console.log(
@@ -157,7 +167,7 @@ module.exports.resolvers = {
       db.Answer.deleteMany({ question_id: _id })
         .then((result) => {
           console.log('Returning', result);
-          return result
+          return result;
         })
         .catch((error) =>
           console.log(
