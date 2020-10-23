@@ -6,7 +6,7 @@ const ObjectId = mongoose.Schema.Types.ObjectId
 
 var connectWithRetry = function () {
   return mongoose
-    .connect(localURI, {
+    .connect(remoteURI, {
       useNewUrlParser: true,
     })
     .catch((error) => {

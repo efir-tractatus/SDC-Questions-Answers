@@ -22,7 +22,7 @@ app.use(cors());
 // })
 
 app.get('/', (req, res) => {
-  res.status(200).send('Hello Universe');
+  res.status(200).send('Hello Universe this server is running a GraphQL endpoint so head over to /graphql');
 });
 
 app.listen({ port: 4000 }, () =>
