@@ -2,6 +2,7 @@ const { ApolloServer, gql } = require('apollo-server-express');
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+const compression = require('compression');
 const db = require('../db/index.js');
 const { resolvers } = require('./resolvers.js');
 const { typeDefs } = require('./typeDefs.js');
@@ -17,12 +18,16 @@ const server = new ApolloServer({
 server.applyMiddleware({ app });
 
 app.use(cors());
+app.use(compression());
 
 // app.use((req, res) => {
 
 // })
 
-var filePath = path.join(__dirname, 'loaderio-a59b0f43e46db3a8a83b68daff4b4d1a.txt');
+var filePath = path.join(
+  __dirname,
+  'loaderio-a59b0f43e46db3a8a83b68daff4b4d1a.txt'
+);
 
 app.get('/', (req, res) => {
   res
