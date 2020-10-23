@@ -1,6 +1,7 @@
 const { ApolloServer, gql } = require('apollo-server-express');
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 const db = require('../db/index.js');
 const { resolvers } = require('./resolvers.js');
 const { typeDefs } = require('./typeDefs.js');
@@ -21,8 +22,18 @@ app.use(cors());
 
 // })
 
+var filePath = path.join(__dirname, 'loaderio-a59b0f43e46db3a8a83b68daff4b4d1a.txt');
+
 app.get('/', (req, res) => {
-  res.status(200).send('Hello Universe this server is running a GraphQL endpoint so head over to /graphql');
+  res
+    .status(200)
+    .send(
+      'Hello Universe this server is running a GraphQL endpoint so head over to /graphql'
+    );
+});
+
+app.get('/loaderio-a59b0f43e46db3a8a83b68daff4b4d1a/', (req, res) => {
+  res.status(200).sendFile(filePath);
 });
 
 app.listen({ port: 4000 }, () =>
