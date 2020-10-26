@@ -17,7 +17,7 @@ const server = new ApolloServer({
 server.applyMiddleware({ app });
 
 app.use(cors());
-app.use(compression());
+// app.use(compression());
 
 var filePath = path.join(
   __dirname,
