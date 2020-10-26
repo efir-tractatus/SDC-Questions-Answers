@@ -12,17 +12,12 @@ const app = express();
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  // context: ({ req, res }) => ({ req, res }),
 });
 
 server.applyMiddleware({ app });
 
 app.use(cors());
 app.use(compression());
-
-// app.use((req, res) => {
-
-// })
 
 var filePath = path.join(
   __dirname,
