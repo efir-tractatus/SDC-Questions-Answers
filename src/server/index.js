@@ -20,16 +20,13 @@ server.applyMiddleware({ app });
 app.use(cors());
 app.use(compression());
 
-var filePath = path.join(
-  __dirname,
-  'loaderio-a59b0f43e46db3a8a83b68daff4b4d1a.txt'
-);
+var filePath = path.join(__dirname, 'loaderio.txt');
 
 app.get('/', (req, res) => {
   res.status(200).send('Questions & Asnwers API');
 });
 
-app.get('/loaderio-a59b0f43e46db3a8a83b68daff4b4d1a/', (req, res) => {
+app.get('/loaderio/', (req, res) => {
   res.status(200).sendFile(filePath);
 });
 
