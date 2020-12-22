@@ -1,3 +1,6 @@
 rawdata/
 node_modules/
 *.pem
+docker-compose-build.yml
+docker-compose-deploy.yml
+*.env

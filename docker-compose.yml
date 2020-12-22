@@ -7,21 +7,29 @@ services:
       network: host
       dockerfile: Dockerfile
     container_name: router
+    environment:
+      PORT: ${PORT}
+      URI: ${remoteURI}
+      MONGODB_USER: ${DB_USER}
+      MONGODB_PASS: ${DB_PASSWORD}
     links:
       - mongodb_container
     ports:
       - 8080:4000
-    depends_on: 
+    depends_on:
       - mongodb_container
 
   mongodb_container:
     image: mongo:latest
     container_name: mongo_qa
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${DB_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${DB_PASSWORD}
     ports:
       - 27018:27017
     volumes:
       - mongodb_data_container:/data/db
-    # command: mongod --auth
+    command: mongod --auth
 
 volumes:
   mongodb_data_container:

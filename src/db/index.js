@@ -1,13 +1,15 @@
 const mongoose = require('mongoose');
-var PORT = 27017;
-var localURI = `mongodb://localhost:${PORT}/qa`;
-var remoteURI = `mongodb://mongo_qa:${PORT}/qa`;
-const ObjectId = mongoose.Schema.Types.ObjectId
+const URI = process.env.URI;
+const MONGODB_USER = process.env.DB_USER;
+const MONGODB_PASS = process.env.DB_PASSWORD;
+const ObjectId = mongoose.Schema.Types.ObjectId;
 
 var connectWithRetry = function () {
   return mongoose
-    .connect(remoteURI, {
-      useNewUrlParser: true,
+    .connect(URI, {
+      poolSize: 20,
+      user: MONGODB_USER,
+      pass: MONGODB_PASS,
     })
     .catch((error) => {
       console.log(error);

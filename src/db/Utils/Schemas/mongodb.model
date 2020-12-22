@@ -1,27 +1,26 @@
 Questions Document
 
 {
-    'question_id': Number,
+    '_id': ObjectID,
     'product_id': Number,
     'body': String,
-    'date': Date,
+    'date': String,
     'name': String,
     'email': String,
-    'helpfulness': Number,
+    'helpful': Number,
     'reported': Boolean,
-    'answers': [Reference Array]
 }
 
 Answers Document
 
 {
-    'answer_id': Number,
-    'question_id': Number,
+    '_id': ObjectID,
+    'question_id': ObjectID,
     'body': String,
-    'date': Date,
+    'date': String,
     'name': String,
     'email': String,
-    'helpfulness': String,
+    'helpful': Number,
     'reported': Boolean,
     'photos': [Strings]
 }
