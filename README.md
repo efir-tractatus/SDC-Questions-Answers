@@ -25,8 +25,8 @@ Create _.env_ file in the root directory with the following variables:
 
 - PORT: The port through which our API will listen to calls
 - URL: The database URL in the following form
-  - `mongodb://localhost:27017/_DB_NAME_` - If running with '**npm start**' command
-  - `mongodb://_DB_USER_:_DB_PASSWORD_@mongo_qa:27017/_DB_NAME_` - If running with '**docker-compose up -d**' command
+  - `mongodb://localhost:27017/DB_NAME` - If running with '**npm start**' command
+  - `mongodb://DB_USER:DB_PASSWORD@mongo_qa:27017/_DB_NAME_` - If running with '**docker-compose up -d**' command
 - DB_USER: Defines root database user on first run
 - DB_PASSWORD: Defines root database password on first run
 
