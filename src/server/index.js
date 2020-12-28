@@ -1,9 +1,9 @@
 const { ApolloServer, gql } = require('apollo-server-express');
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const compression = require('compression');
-const db = require('../db/index.js');
 const { resolvers } = require('./resolvers.js');
 const { typeDefs } = require('./typeDefs.js');
 const PORT = process.env.PORT;
@@ -31,5 +31,7 @@ app.get('/loaderio/', (req, res) => {
 });
 
 app.listen({ port: PORT }, () =>
-  console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`)
+  console.log(
+    `🚀 Server ready at http://localhost:${PORT}${server.graphqlPath}`
+  )
 );

@@ -9,9 +9,7 @@ services:
     container_name: router
     environment:
       PORT: ${PORT}
-      URI: ${remoteURI}
-      MONGODB_USER: ${DB_USER}
-      MONGODB_PASS: ${DB_PASSWORD}
+      URL: ${URL}
     links:
       - mongodb_container
     ports:
