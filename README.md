@@ -5,7 +5,7 @@
 - [General info](#general-info)
 - [Technologies](#technologies)
 - [Setup](#setup)
-- [Features](#features)
+- [Performance](#features)
 - [Status](#status)
 - [Contact](#contact)
 
@@ -30,18 +30,14 @@ Create _.env_ file in the root directory with the following variables:
 - DB_USER: Defines root database user on first run
 - DB_PASSWORD: Defines root database password on first run
 
-## Features
+## Performance
 
-List of features ready and TODOs for future development
-
-- Awesome feature 1
-- Awesome feature 2
-- Awesome feature 3
+Placeholder
 
 ## Status
 
 Project is: _finished_
 
-## Contact
+## Created by
 
-Created by [Denis Sanches](https://github.com/efir-tractatus) - feel free to contact me!
+[Denis Sanches](https://github.com/efir-tractatus) - feel free to get in touch!
