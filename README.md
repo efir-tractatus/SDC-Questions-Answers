@@ -14,9 +14,9 @@
 ## Technologies
 
 - Node.js - version 14.5.2
-- Apollo-Server-Express - version 2.18.2
-- GraphQL - version 15.3
-- Mongoose - version 5.10.9
+- Apollo-Server-Express - version 2.19.1
+- GraphQL - version 15.4
+- Mongoose - version 5.11.8
 - MongoDB - version 4.4.2
 
 ## Setup
