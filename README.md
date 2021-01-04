@@ -35,8 +35,8 @@ Create _.env_ file in the root directory with the following variables:
 After creating the _.env_ file, execute the following commands from the console:
 
 - **npm install** to install project dependencies
-- **npm start** to instantiate the service locally
-  or
+- **npm start** to instantiate the service locally  
+  _or_
 - **docker-copose up -d** to instantiate docker containers for server and database
 
 ## Performance
