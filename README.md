@@ -18,6 +18,8 @@
 - GraphQL - version 15.4
 - Mongoose - version 5.11.8
 - MongoDB - version 4.4.2
+- Docker - version 20.10.1
+- Docker-Compose - version 1.27.4
 
 ## Setup
 
@@ -36,8 +38,6 @@ After creating the _.env_ file, execute the following commands from the console:
 - **npm start** to instantiate the service
 
 ## Performance
-
-Placeholder
 
 ## Status
 
