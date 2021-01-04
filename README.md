@@ -5,9 +5,9 @@
 - [General info](#general-info)
 - [Technologies](#technologies)
 - [Setup](#setup)
-- [Features](#features)
+- [Performance](#performance)
 - [Status](#status)
-- [Contact](#contact)
+- [Created by](#created-by)
 
 ## General info
 
@@ -30,18 +30,19 @@ Create _.env_ file in the root directory with the following variables:
 - DB_USER: Defines root database user on first run
 - DB_PASSWORD: Defines root database password on first run
 
-## Features
+After creating the _.env_ file, execute the following commands from the console:
 
-List of features ready and TODOs for future development
+- **npm install** to install project dependencies
+- **npm start** to instantiate the service
 
-- Awesome feature 1
-- Awesome feature 2
-- Awesome feature 3
+## Performance
+
+Placeholder
 
 ## Status
 
 Project is: _finished_
 
-## Contact
+## Created by
 
-Created by [Denis Sanches](https://github.com/efir-tractatus) - feel free to contact me!
+[Denis Sanches](https://github.com/efir-tractatus) - feel free to get in touch!
