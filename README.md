@@ -5,9 +5,9 @@
 - [General info](#general-info)
 - [Technologies](#technologies)
 - [Setup](#setup)
-- [Performance](#features)
+- [Performance](#performance)
 - [Status](#status)
-- [Contact](#contact)
+- [Created by](#created-by)
 
 ## General info
 
@@ -29,6 +29,11 @@ Create _.env_ file in the root directory with the following variables:
   - `mongodb://DB_USER:DB_PASSWORD@mongo_qa:27017/DB_NAME` - If running with '**docker-compose up -d**' command
 - DB_USER: Defines root database user on first run
 - DB_PASSWORD: Defines root database password on first run
+
+After creating the _.env_ file, execute the following commands from the console:
+
+- **npm install** to install project dependencies
+- **npm start** to instantiate the service
 
 ## Performance
 
