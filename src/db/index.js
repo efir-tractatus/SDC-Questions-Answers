@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const URL = process.env.URL;
+const USER = process.env.DB_USER;
+const PASS = process.env.DB_PASSWORD;
 const ObjectId = mongoose.Schema.Types.ObjectId;
 
 var connectWithRetry = function () {
@@ -7,6 +9,8 @@ var connectWithRetry = function () {
     .connect(URL, {
       poolSize: 20,
       authSource: 'admin',
+      user: USER,
+      pass: PASS,
     })
     .catch((error) => {
       console.log(error);
