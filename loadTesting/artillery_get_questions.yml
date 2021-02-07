@@ -1,5 +1,5 @@
 config:
-  target: "http://localhost:4000"
+  target: 'http://192.168.1.7:8080'
   phases:
     - duration: 60
       arrivalRate: 5
@@ -8,19 +8,19 @@ config:
       arrivalRate: 5
       rampTo: 100
       name: Ramp up load
-    # - duration: 600
-    #   arrivalRate: 50
-    #   name: Sustained load
+    - duration: 300
+      arrivalRate: 200
+      name: Sustained load
   payload:
     # Load search keywords from an external CSV file and make them available
     # to virtual user scenarios as variable "keywords":
-    path: "products.csv"
+    path: 'products.csv'
     fields:
-      - "product"
+      - 'product'
 scenarios:
   # We define one scenario:
-  - name: "Get Questions in a Product"
+  - name: 'Get Questions in a Product'
     flow:
-      - get:
-          url: "/graphql"
-          body: "query={   getQuestions(product_id: {{ product }}){     _id     body     name     email     date     answers{       _id       body       name       email     photos       }   } }"
+      - post:
+          url: '/graphql'
+          json: { 'query': '{getQuestions(product_id: {{product}}){_id}}' }
